@@ -1,9 +1,10 @@
 # SLID = Secure Lightweight Identifier
-# placeholder module
+# Cryptographically secure 18-char generator (base62)
 
-# SLID = Secure Lightweight Identifier
-# minimal placeholder
+import secrets
+
+_ALPHABET = "0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz"
+_LENGTH = 18
 
 def generate_slid():
-    # 18-char fixed test value; replace with CSPRNG later
-    return "0123456789ABCDEFGH"
+    return ''.join(secrets.choice(_ALPHABET) for _ in range(_LENGTH))
