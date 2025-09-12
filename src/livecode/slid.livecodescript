@@ -1,4 +1,4 @@
-script "SLID"
+﻿script "SLID"
 
 ## SLID = Secure Lightweight Identifier
 # timestamp: 2025-09-12_22-53-00_CEST
