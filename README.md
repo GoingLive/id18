@@ -28,3 +28,10 @@ It is designed to provide short, unique, and safe IDs for applications that requ
 Example (pseudo code):
 id = generateSLID()
 // returns: "3kZt7GfQ8yNcPW5dR2"
+
+-- LiveCode usage
+put genSLID()                        -- new 18-char SLID
+put genSLID("validate", genSLID())   -- true // or use any string as the second parameter to test
+put genSLID("bulk", 5)               -- CR-delimited 5 lines
+put genSLID("--version")
+put genSLID("--help")
