@@ -1,0 +1,34 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "slid"
+dynamic = ["version"]
+description = "Cryptographically secure 18-character identifier library"
+readme = "README.md"
+license = { file = "LICENSE" }
+authors = [{ name = "Roland" }]
+requires-python = ">=3.8"
+keywords = ["identifier", "csprng", "security", "id", "base62"]
+classifiers = [
+  "Development Status :: 3 - Alpha",
+  "Intended Audience :: Developers",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Programming Language :: Python :: 3.8",
+  "Programming Language :: Python :: 3.9",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.16",
+  "Topic :: Security :: Cryptography",
+  "Operating System :: OS Independent"
+]
+
+[tool.setuptools.packages.find]
+where = ["src/python"]
+
+[tool.setuptools.dynamic]
+version = { attr = "slid.__version__" }
