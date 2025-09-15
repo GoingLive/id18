@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+src/python/id18.egg-info/PKG-INFO
+src/python/id18.egg-info/SOURCES.txt
+src/python/id18.egg-info/dependency_links.txt
+src/python/id18.egg-info/top_level.txt
+src/python/id18/__init__.py
+src/python/id18.egg-info/SOURCES.txt

@@ -1,2 +1,2 @@
-from slid import generate_slid, validate_slid, get_slid
-print(generate_slid())
+from id18 import generate_id18, validate_id18, get_id18
+print(generate_id18())

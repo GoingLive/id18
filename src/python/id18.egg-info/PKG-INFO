@@ -1,5 +1,5 @@
 Metadata-Version: 2.4
-Name: slid
+Name: id18
 Version: 0.1.3
 Summary: Cryptographically secure 18-character identifier library
 Author: Roland
@@ -44,14 +44,14 @@ Description-Content-Type: text/markdown
 License-File: LICENSE
 Dynamic: license-file
 
-# SLID
+# id18
 Cryptographically secure 18-char identifier library
 
 ---
 
 ## Overview
 
-SLID generates fixed-length, secure identifiers based on a cryptographically secure pseudorandom number generator (CSPRNG).  
+id18 generates fixed-length, secure identifiers based on a cryptographically secure pseudorandom number generator (CSPRNG).  
 It is designed to provide short, unique, and safe IDs for applications that require both compactness and security.
 
 - Length: 18 characters
@@ -72,5 +72,5 @@ It is designed to provide short, unique, and safe IDs for applications that requ
 ## Usage
 
 Example (pseudo code):
-id = generateSLID()
+id = generateid18()
 // returns: "3kZt7GfQ8yNcPW5dR2"

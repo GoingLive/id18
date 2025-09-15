@@ -1,9 +1,0 @@
-LICENSE
-README.md
-pyproject.toml
-src/python/slid.egg-info/PKG-INFO
-src/python/slid.egg-info/SOURCES.txt
-src/python/slid.egg-info/dependency_links.txt
-src/python/slid.egg-info/top_level.txt
-src/python/slid/__init__.py
-src/python/slid.egg-info/SOURCES.txt

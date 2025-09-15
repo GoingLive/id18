@@ -1,6 +1,6 @@
-﻿script "SLID"
+﻿script "id18"
 
-## SLID = Secure Lightweight Identifier
+## id18 = Secure Lightweight Identifier
 # timestamp: 2025-09-12_22-53-00_CEST
 
 ## Versioning policy (SemVer)
@@ -10,48 +10,48 @@
 # 1.0+:
 #   MAJOR: breaking; MINOR: features; PATCH: fixes.
 
-local sSLID_Version = "0.1.3"
+local sid18_Version = "0.1.3"
 local sBuf
 local sPos
 
-function genSLID pCmd , pValue
+function genid18 pCmd , pValue
    switch pCmd
       ---
       case "bulk"
-         return generateSLIDList (pValue)
+         return generateid18List (pValue)
          break
          ---
       case "validate"
-         return validateSLID (pValue)
+         return validateid18 (pValue)
          break
          ---
       case "-v"
       case "--version"
       case "version"
-         return merge("SLID [[sSLID_Version]]")
+         return merge("id18 [[sid18_Version]]")
          break
          ---
       case "-h"
       case "--help"
       case "?"
       case "help"
-         return SLID_Help()
+         return id18_Help()
          break
          ---
       case "--about"
       case "about"
       case "--license"
       case "license"
-         return SLID_About()
+         return id18_About()
          break
          ---
       default
-         return generateSLID()
+         return generateid18()
    end switch
-end genSLID
+end genid18
 
-function generateSLID
-   ## Generate CSPRNG 18-character SLID (base62), unbiased
+function generateid18
+   ## Generate CSPRNG 18-character id18 (base62), unbiased
    # timestamp: 2025-09-12_22-53-00_CEST
    # purpose: Return a secure 18-char alphanumeric ID using buffered randomBytes()
    # notes: Rejection sampling avoids modulo bias
@@ -70,7 +70,7 @@ function generateSLID
    put floor(256 / tAlphabetLen) * tAlphabetLen into tMaxAccept   -- 248
    
    repeat while the number of chars of tID < tTargetLen
-      put _SLID_nextByte() into tVal          -- buffered byte
+      put _id18_nextByte() into tVal          -- buffered byte
       if tVal < tMaxAccept then               -- accept only 0..247
          put 1 + (tVal mod tAlphabetLen) into tIndex
          put char tIndex of tAlphabet after tID
@@ -78,9 +78,9 @@ function generateSLID
    end repeat
    
    return tID
-end generateSLID
+end generateid18
 
-function _SLID_nextByte
+function _id18_nextByte
    ## Return one CSPRNG byte (0..255) from a buffered pool
    # timestamp: 2025-09-12_22-53-00_CEST
    # purpose: Reduce overhead vs randomBytes(1) per char
@@ -103,15 +103,15 @@ function _SLID_nextByte
    end if
    
    return tVal
-end _SLID_nextByte
+end _id18_nextByte
 
-function generateSLIDList pCount
-   ## Generate a CR-delimited list of SLIDs (array + combine, faster)
+function generateid18List pCount
+   ## Generate a CR-delimited list of id18s (array + combine, faster)
    # usage:
-   #   put generateSLIDList(5)
-   #   put generateSLIDList(100000)
+   #   put generateid18List(5)
+   #   put generateid18List(100000)
    # timestamp: 2025-09-12_22-53-00_CEST
-   # purpose: Return pCount SLIDs, each on its own line (CR-delimited)
+   # purpose: Return pCount id18s, each on its own line (CR-delimited)
    # notes:
    #   - Avoids costly string appends by collecting in an array
    #   - Uses 'repeat pCount' per your preference
@@ -129,20 +129,20 @@ function generateSLIDList pCount
    put 0 into i
    repeat pCount
       add 1 to i
-      put generateSLID() into tA[i]
+      put generateid18() into tA[i]
       if (i mod 1000) = 0 then wait 0 with messages
    end repeat
    combine tA by cr and tab
    return tA
-end generateSLIDList
+end generateid18List
 
-function validateSLID pID
-   ## Validate SLID: exactly 18 chars, base62 alphabet only
+function validateid18 pID
+   ## Validate id18: exactly 18 chars, base62 alphabet only
    # usage:
-   #   put validateSLID(genSLID())          -- true
-   #   put validateSLID("abc-INVALID-123")  -- false
+   #   put validateid18(genid18())          -- true
+   #   put validateid18("abc-INVALID-123")  -- false
    # timestamp: 2025-09-12_22-53-00_CEST
-   # purpose: Return true if pID is a valid SLID, otherwise false
+   # purpose: Return true if pID is a valid id18, otherwise false
    
    local tAlphabet
    local tLen
@@ -164,52 +164,52 @@ function validateSLID pID
    end repeat
    
    return true
-end validateSLID
+end validateid18
 
-function SLID_About
+function id18_About
    ## About / license / credits
    # usage:
-   #   put genSLID("--about")
+   #   put genid18("--about")
    # timestamp: 2025-09-12_00-00-00_CEST
    # purpose: Provide license/credit info without cluttering --help/--version
    
    local t
-   put "SLID = Secure Lightweight Identifier" & cr into t
-   put merge("Version: [[sSLID_Version]]") & cr after t
+   put "id18 = Secure Lightweight Identifier" & cr into t
+   put merge("Version: [[sid18_Version]]") & cr after t
    put "License: MIT (see LICENSE in repo)" & cr after t
    put "Copyright: © 2025 Roland Hüttmann, Switzerland. All rights reserved." & cr after t
-   put "Repository: https://github.com/GoingLive/SLID" & cr after t
+   put "Repository: https://github.com/GoingLive/id18" & cr after t
    return t
-end SLID_About
+end id18_About
 
-function SLID_Help
-   ## Short help text for SLID
+function id18_Help
+   ## Short help text for id18
    # usage:
-   #   put genSLID("--help")
+   #   put genid18("--help")
    # timestamp: 2025-09-12_00-00-00_CEST
    # purpose: Show usage synopsis and supported commands
    
    local t, q
    put quote into q
    
-   put "SLID = Secure Lightweight Identifier" & cr into t
-   put "Version: " & sSLID_Version & cr & cr after t
+   put "id18 = Secure Lightweight Identifier" & cr into t
+   put "Version: " & sid18_Version & cr & cr after t
    
    put "Usage:" & cr after t
-   put "  genSLID()                      -> new 18-char SLID" & cr after t
-   put merge("  genSLID([[q]]validate[[q]], s)   -> true | false") & cr after t
-   put merge("  genSLID([[q]]bulk[[q]], n)       -> CR-delimited list (n ≤ 100000)") & cr after t
-   put merge("  genSLID([[q]]--version[[q]])     -> show version") & cr after t
-   put merge("  genSLID([[q]]--help[[q]])        -> this help") & cr after t
-   put merge("  genSLID([[q]]--about[[q]])       -> license & credits") & cr & cr after t
+   put "  genid18()                      -> new 18-char id18" & cr after t
+   put merge("  genid18([[q]]validate[[q]], s)   -> true | false") & cr after t
+   put merge("  genid18([[q]]bulk[[q]], n)       -> CR-delimited list (n ≤ 100000)") & cr after t
+   put merge("  genid18([[q]]--version[[q]])     -> show version") & cr after t
+   put merge("  genid18([[q]]--help[[q]])        -> this help") & cr after t
+   put merge("  genid18([[q]]--about[[q]])       -> license & credits") & cr & cr after t
    
    put "Notes:" & cr after t
-   put "  - SLID length: 18; alphabet: 0-9 A-Z a-z (base62)" & cr after t
+   put "  - id18 length: 18; alphabet: 0-9 A-Z a-z (base62)" & cr after t
    put "  - Generation uses CSPRNG with rejection sampling (unbiased)" & cr after t
    put "  - Bulk: yields UI every 1000 items; capped at 100000" & cr after t
    
    return t
-end SLID_Help
+end id18_Help
 
 
 
